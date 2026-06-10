@@ -1,13 +1,8 @@
 #!/bin/bash
-# Azure App Service startup script
 
-cd /home/site/wwwroot
-
-# Aplicar migraciones de base de datos
 echo "Aplicando migraciones Alembic..."
 python -m alembic upgrade head
 
-# Iniciar servidor
 echo "Iniciando Gunicorn..."
 exec gunicorn main:app \
   --workers 4 \
